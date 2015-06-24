@@ -28,7 +28,7 @@ object SampleRecommendation {
      * Mahout's recommenders use an interface called DataModel to handle interaction data.
      * You can load our made up interactions like this:
      */
-    val model = new FileDataModel(new File("./src/main/resources/dataset.csv"))
+    val dataModel = new FileDataModel(new File("./src/main/resources/dataset.csv"))
 
     /*
      * In this example, we want to create a user-based recommendation engine. The idea behind this approach is that
@@ -37,19 +37,19 @@ object SampleRecommendation {
      * their interactions. There are several methods for doing this. One popular method is to compute
      * the correlation coefficient between their interactions. In Mahout, you use this method as follows:
      */
-    val similarity = new PearsonCorrelationSimilarity(model)
+    val similarity = new PearsonCorrelationSimilarity(dataModel)
 
     /*
      * The next thing we have to do is to define which similar users we want to leverage for the recommendation engine.
      * For the sake of simplicity, we'll use all that have a similarity greater than 0.1. This is implemented
      * via a ThresholdUserNeighborhood:
      */
-    val neighborhood = new ThresholdUserNeighborhood(0.1, similarity, model)
+    val neighborhood = new ThresholdUserNeighborhood(0.1, similarity, dataModel)
 
     /*
      * Now we have all the pieces to create our recommendation engine:
      */
-    val recommender = new GenericUserBasedRecommender(model, neighborhood, similarity)
+    val recommender = new GenericUserBasedRecommender(dataModel, neighborhood, similarity)
 
     /*
      * We can easily ask the recommendation engine for recommendations now. If we wanted to get
