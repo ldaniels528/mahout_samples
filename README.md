@@ -9,7 +9,16 @@ taste and pick the recommendations from their items. For finding similar users, 
 their interactions. There are several methods for doing this. One popular method is to compute
 the correlation coefficient between their interactions.
 
-Data Set:
+## Data Set:
+
+Mahout's recommenders expect interactions between users and items as input. The easiest way to 
+supply such data to Mahout is in the form of a textfile, where every line has the format userID,itemID,value. 
+Here userID and itemID refer to a particular user and a particular item, and value denotes the strength of 
+the interaction (e.g. the rating given to a movie).
+
+In this example, we'll use some made up data for simplicity. Create a file called "dataset.csv" 
+and copy the following example interactions into the file.
+
 ```
 1,10,1.0
 1,11,2.0
