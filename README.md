@@ -3,6 +3,12 @@
 This project is a small collection of experiments with Apache Mahout using Scala. My first experiment is a 
 quick-and-dirty user recommendation engine using a small data set (a file containing 32 entries).
 
+In this example, we want to create a user-based recommendation engine. The idea behind this approach is that
+when we want to compute recommendations for a particular users, we look for other users with a similar
+taste and pick the recommendations from their items. For finding similar users, we have to compare
+their interactions. There are several methods for doing this. One popular method is to compute
+the correlation coefficient between their interactions.
+
 Data Set:
 ```
 1,10,1.0
